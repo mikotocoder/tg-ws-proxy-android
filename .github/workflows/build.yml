@@ -26,9 +26,21 @@ jobs:
         with:
           gradle-version: wrapper
 
-      - name: Fix local.properties
+      - name: Decode keystore
         run: |
-          echo "sdk.dir=$ANDROID_HOME" > local.properties
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > $GITHUB_WORKSPACE/release.keystore
+          ls -lh $GITHUB_WORKSPACE/release.keystore
+
+      - name: Write local.properties
+        run: |
+          cat > local.properties <<EOF
+          sdk.dir=$ANDROID_HOME
+          KEYSTORE_FILE=../release.keystore
+          KEYSTORE_PASSWORD=${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS=${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD=${{ secrets.KEY_PASSWORD }}
+          EOF
+          sed 's/KEYSTORE_PASSWORD=.*/KEYSTORE_PASSWORD=***/; s/KEY_PASSWORD=.*/KEY_PASSWORD=***/' local.properties
 
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
