@@ -36,6 +36,7 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.amurcanov.tgwsproxy.ProxyService
+import com.amurcanov.tgwsproxy.R
 import com.amurcanov.tgwsproxy.SettingsStore
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
