@@ -85,7 +85,12 @@ class MainActivity : ComponentActivity() {
     override fun attachBaseContext(newBase: Context) {
         val prefs = newBase.getSharedPreferences("lang_prefs", Context.MODE_PRIVATE)
         val lang = prefs.getString("app_language", "ru") ?: "ru"
-        val locale = Locale(lang)
+        val locale = when (lang) {
+            "zh" -> Locale("zh", "CN")
+            "zh-TW" -> Locale("zh", "TW")
+            else -> Locale(lang)
+        }
+Locale.setDefault(locale)
         Locale.setDefault(locale)
         val config = android.content.res.Configuration(newBase.resources.configuration)
         config.setLocale(locale)
