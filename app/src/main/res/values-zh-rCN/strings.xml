@@ -133,5 +133,5 @@
     <string name="error_opening_client">打开客户端时出错</string>
     <string name="choose_client">选择客户端</string>
     <string name="error_choosing_client">选择客户端时出错</string>
-    <string name="ip_and_port">IP 和端口</string>
+    <string name="ip_and_port">IP 和 端口</string>
 </resources>
