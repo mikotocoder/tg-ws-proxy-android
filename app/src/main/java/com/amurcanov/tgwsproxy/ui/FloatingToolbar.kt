@@ -241,7 +241,7 @@ fun FloatingToolbar(
                     val activity = LocalContext.current as? android.app.Activity
                     
                     Text(
-                        "Language / Язык",
+                        "Language",
                         style = MaterialTheme.typography.labelSmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.padding(bottom = 6.dp, start = 4.dp)
